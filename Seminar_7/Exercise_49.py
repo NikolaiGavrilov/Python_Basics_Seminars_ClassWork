@@ -40,12 +40,23 @@ def find_planet (orbits_sq_list, max_sq_data):
         if orbits_sq_list[i] == max_sq_data:
             return i
 
+def find_farthest_orbit(orbits):
+    orbits_filtered = filter_list(orbits)
+    orbits_sq = find_sq(orbits_filtered)
+    max_sq = max(orbits_sq)
+    index_of_planet_max_sq = find_planet(orbits_sq, max_sq)
+    return orbits_filtered[index_of_planet_max_sq]
+
 orbits = [(1, 3), (2.5, 10), (7, 2), (6, 6), (4, 3)]
-orbits_filtered = filter_list(orbits)
-print(f'Orbits with no equal axis: {orbits_filtered}')
-orbits_sq = find_sq(orbits_filtered)
-print(f'Square of orbits: {orbits_sq}')
-max_sq = max(orbits_sq)
-print(f'Max square is: {max_sq}')
-index_of_planet_max_sq = find_planet(orbits_sq, max_sq)
-print(f'Planet with max square is planet {orbits_filtered[index_of_planet_max_sq]}')
+print(*find_farthest_orbit(orbits))
+
+
+
+# orbits_filtered = filter_list(orbits)
+# print(f'Orbits with no equal axis: {orbits_filtered}')
+# orbits_sq = find_sq(orbits_filtered)
+# print(f'Square of orbits: {orbits_sq}')
+# max_sq = max(orbits_sq)
+# print(f'Max square is: {max_sq}')
+# index_of_planet_max_sq = find_planet(orbits_sq, max_sq)
+# print(f'Planet with max square is planet {orbits_filtered[index_of_planet_max_sq]}')
